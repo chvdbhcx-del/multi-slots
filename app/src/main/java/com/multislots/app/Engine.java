@@ -13,7 +13,10 @@ final class Engine {
     /** Copies the app installed on the phone into the isolated slot. Returns null on success, else an error text. */
     static String install(String pkg, int userId) {
         try {
-            if (core().getUserInfo(userId) == null) core().createUser(userId);
+            try {
+                core().createUser(userId); // no-op / throws if the user already exists
+            } catch (Throwable ignored) {
+            }
             top.niunaijun.blackbox.entity.pm.InstallResult r = core().installPackageAsUser(pkg, userId);
             if (r != null && r.success) return null;
             return r == null ? "unknown error" : String.valueOf(r.msg);
