@@ -1,0 +1,49 @@
+plugins {
+    id 'com.android.application'
+}
+
+// Engine core module (detected by CI, default :Bcore)
+def coreModule = findProperty('coreModule') ?: ':Bcore'
+
+android {
+    namespace 'com.multislots.app'
+    compileSdk((findProperty('slotsCompileSdk') ?: '34') as int)
+
+    defaultConfig {
+        applicationId 'com.multislots.app'
+        minSdk 24
+        targetSdk((findProperty('slotsTargetSdk') ?: '28') as int)
+        versionCode((System.getenv('GITHUB_RUN_NUMBER') ?: '1') as int)
+        versionName "1.0.${System.getenv('GITHUB_RUN_NUMBER') ?: '0'}"
+        ndk { abiFilters 'arm64-v8a', 'armeabi-v7a' }
+    }
+
+    signingConfigs {
+        release {
+            def ks = System.getenv('SLOTS_KEYSTORE')
+            if (ks) {
+                storeFile file(ks)
+                storePassword System.getenv('SLOTS_KEYSTORE_PASSWORD')
+                keyAlias 'slots'
+                keyPassword System.getenv('SLOTS_KEYSTORE_PASSWORD')
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            if (System.getenv('SLOTS_KEYSTORE')) signingConfig signingConfigs.release
+            else signingConfig signingConfigs.debug
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation project(coreModule)
+}

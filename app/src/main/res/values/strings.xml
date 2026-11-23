@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Multi Slots</string>
+    <string name="settings">Приложение</string>
+    <string name="add_slot">Добавить аккаунт</string>
+    <string name="empty">Пока нет ни одного аккаунта.\nНажмите «Добавить аккаунт», затем войдите в GetContact в новой копии.</string>
+    <string name="slot_name_hint">Например, номер телефона</string>
+    <string name="slot_default_name">Аккаунт %1$d</string>
+    <string name="slot_sub">Изолированная копия №%1$d · удерживайте для действий</string>
+    <string name="create">Создать</string>
+    <string name="installing">Создаю копию приложения…</string>
+    <string name="install_failed">Не удалось: %1$s</string>
+    <string name="slot_ready">Готово. Откройте аккаунт и войдите по номеру.</string>
+    <string name="launch_failed">Не удалось запустить приложение в этой копии</string>
+    <string name="rename">Переименовать</string>
+    <string name="shortcut">Ярлык на рабочий стол</string>
+    <string name="shortcut_unsupported">Лаунчер не поддерживает ярлыки</string>
+    <string name="update_app">Обновить приложение в копии</string>
+    <string name="updated">Обновлено, вход сохранён</string>
+    <string name="delete">Удалить</string>
+    <string name="delete_title">Удалить «%1$s»?</string>
+    <string name="delete_msg">Копия и все её данные будут стёрты. Чтобы вернуть аккаунт, понадобится войти заново по SMS.</string>
+    <string name="no_target_title">Сначала установите приложение</string>
+    <string name="no_target_msg">Установите GetContact (%1$s) из Google Play обычным способом. Multi Slots делает изолированные копии уже установленного приложения.</string>
+    <string name="target_package">Какое приложение клонировать</string>
+    <string name="target_package_msg">Имя пакета. По умолчанию GetContact: app.source.getcontact</string>
+</resources>

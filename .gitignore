@@ -1,0 +1,6 @@
+engine/
+out/
+build/
+.gradle/
+*.jks
+local.properties
