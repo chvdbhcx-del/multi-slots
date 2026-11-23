@@ -11,7 +11,7 @@ permissions:
 env:
   # Open-source virtualization engine (Apache-2.0). Pin to a commit once a build is green.
   ENGINE_REPO: https://github.com/ALEX5402/NewBlackbox.git
-  ENGINE_REF: main
+  ENGINE_REF: 89b59836c66f173756a4ae258cf379a957649820
 
 jobs:
   build:
@@ -22,11 +22,11 @@ jobs:
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: '17'
+          java-version: '21'
 
       - name: Fetch engine
         run: |
-          git clone --depth 50 "$ENGINE_REPO" engine
+          git clone "$ENGINE_REPO" engine
           cd engine
           git checkout "$ENGINE_REF"
           echo "Engine commit: $(git log -1 --format='%H %cd')"

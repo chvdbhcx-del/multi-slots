@@ -239,7 +239,7 @@ public class MainActivity extends Activity {
             SlotStore.Slot s = slots.get(p);
             ((TextView) v.findViewById(R.id.badge)).setText(String.valueOf(p + 1));
             ((TextView) v.findViewById(R.id.name)).setText(s.name);
-            ((TextView) v.findViewById(R.id.sub)).setText(getString(R.string.slot_sub, s.userId));
+            ((TextView) v.findViewById(R.id.sub)).setText(getString(R.string.slot_sub, s.userId + 1));
             return v;
         }
     }

@@ -7,12 +7,12 @@ def coreModule = findProperty('coreModule') ?: ':Bcore'
 
 android {
     namespace 'com.multislots.app'
-    compileSdk((findProperty('slotsCompileSdk') ?: '34') as int)
+    compileSdk rootProject.ext.compileSdkVersion
 
     defaultConfig {
         applicationId 'com.multislots.app'
-        minSdk 24
-        targetSdk((findProperty('slotsTargetSdk') ?: '28') as int)
+        minSdk rootProject.ext.minSdk
+        targetSdk rootProject.ext.targetSdkVersion
         versionCode((System.getenv('GITHUB_RUN_NUMBER') ?: '1') as int)
         versionName "1.0.${System.getenv('GITHUB_RUN_NUMBER') ?: '0'}"
         ndk { abiFilters 'arm64-v8a', 'armeabi-v7a' }
@@ -39,8 +39,8 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_21
+        targetCompatibility JavaVersion.VERSION_21
     }
 }
 
